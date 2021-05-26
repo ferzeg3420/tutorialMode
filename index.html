@@ -3,14 +3,30 @@
     <head>
         <meta charset="UTF-8">
         <title>Testing shiet</title>
-        <link href="style.css"
+        <link href="tutorialMode.css"
               rel="stylesheet">
     </head>
     <body>
         <div id="tutorial-modal" 
-             style="z-index: 1098"
-             class="fixed-and-centered element-removed">
-            <div class="dialog-box">
+             style="z-index: 1098;
+                    position: fixed;
+                    left: 0;
+                    top: 0;
+                    height: 100vh;
+                    width: 100vw;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;"
+             class="element-removed">
+            <div style="background: whitesmoke;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-evenly;
+                        align-items: center;
+                        padding: 10px;
+                        min-height: 200px;
+                        min-width: 500px;
+                        border-radius: 5px;">
                 <p>
                     Quick tutorial?
                 </p>
@@ -24,57 +40,80 @@
                 </div>
             </div>
         </div>
-        <br>
-
-        <div id="tutorial-focus-1" class="thing"> <!-- remove -->
+        <div id="tutorial-focus-1"
+             style="display: flex;
+                    flex-direction: row;
+                    justify-content: space-evenly;
+                    align-items: center;
+                    background: salmon;
+                    width: 20vw;
+                    min-height: 10vh;"> 
             thing 1
         </div>
         <br>
-        <div id="tutorial-focus-2" class="thing"> <!-- remove -->
+        <div id="tutorial-focus-2"  
+             style="display: flex;
+                    flex-direction: row;
+                    justify-content: space-evenly;
+                    align-items: center;
+                    background: salmon;
+                    width: 20vw;
+                    min-height: 10vh;"> 
             thing 2
         </div>
         <br>
-        <div id="tutorial-focus-3" class="thing"> <!-- remove -->
+        <div id="tutorial-focus-3"  
+             style="display: flex;
+                    flex-direction: row;
+                    justify-content: space-evenly;
+                    align-items: center;
+                    background: salmon;
+                    width: 20vw;
+                    min-height: 10vh;"> 
             thing 3
         </div>
         <br>
-        <div id="tutorial-focus-4" class="thing"> <!-- remove -->
+        <div id="tutorial-focus-4"  
+             style="display: flex;
+                    flex-direction: row;
+                    justify-content: space-evenly;
+                    align-items: center;
+                    background: salmon;
+                    width: 20vw;
+                    min-height: 10vh;"> 
             Really big thing 4 that spans a wide line.
         </div>
         <br>
         
-        <div class="info-tooltip element-removed"
+        <div class="tutorial-text element-removed"
              id="tutorial-text-1"
              style="top: 10px;">
-            <div class="triangle"></div>
+            <div class="tooltip-triangle"></div>
             <p>
                 Information 1
             </p>
         </div>
-        <div class="info-tooltip element-removed"
-             id="tutorial-text-2"
-             style="top: 100px;">
-            <div class="triangle"></div>
+        <div class="tutorial-text element-removed"
+             id="tutorial-text-2">
+            <div class="tooltip-triangle"></div>
             <p>
                 Really long message.
             </p>
         </div>
-        <div class="info-tooltip element-removed"
-             id="tutorial-text-3"
-             style="top: 200px;">
-            <div class="triangle"></div>
+        <div class="tutorial-text element-removed"
+             id="tutorial-text-3">
+            <div class="tooltip-triangle"></div>
             <p>
                 3
             </p>
         </div>
-        <div class="info-tooltip element-removed"
-             id="tutorial-text-4"
-             style="top: 200px;">
-            <div class="triangle"></div>
+        <div class="tutorial-text element-removed"
+             id="tutorial-text-4">
+            <div class="tooltip-triangle"></div>
             <p>
                 Really long message that should span multiple lines. Hopefully this is the case.
             </p>
         </div>
-        <script src="script.js"></script>
+        <script src="tutorialMode.js"></script>
     </body>
 </html>

@@ -35,7 +35,7 @@ document.body.insertAdjacentHTML("beforeend",
          <div class="x-back-slash"></div>\
      </div>\
      <div id="click-message"\
-          style="z-index: 1099"\
+          style="z-index: 1098"\
           class="fixed-on-bottom-center element-removed">\
           <h4>Click anywhere to continue</h4>\
      </div>'
