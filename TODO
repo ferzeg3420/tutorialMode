@@ -1,0 +1,6 @@
+
+Fix the scrolling bug.
+
+Put the triangle in the injected javascript in the script tutorialMode.js.
+
+If a square is too big for the screen, draw it touching the edge (10px away from it would be better) of the screen.
