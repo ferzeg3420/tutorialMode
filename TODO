@@ -1,6 +1,8 @@
 
+Get rid of globals as much as possible.
+
+Move the async from the two getTutorialEtc functions to the invisibleCoverSomething function. Where it is now, it doesn't make sense how it is right now.
+
 Fix the scrolling bug.
 
-Put the triangle in the injected javascript in the script tutorialMode.js.
-
-If a square is too big for the screen, draw it touching the edge (10px away from it would be better) of the screen.
+If a tooltip square is too big for the screen, draw it touching the edge (10px away from it would be better) of the screen.
