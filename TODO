@@ -1,6 +1,3 @@
-
-Get rid of globals as much as possible.
-
 Move the async from the two getTutorialEtc functions to the invisibleCoverSomething function. Where it is now, it doesn't make sense how it is right now.
 
 Fix the scrolling bug.
