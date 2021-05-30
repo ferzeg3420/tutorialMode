@@ -6,4 +6,6 @@ If a tooltip square is too big for the screen, draw it touching the edge (10px a
 
 Add the ability to select where the text tooltip appears: left, middle, right.
 
-remove all the listeners when closing the tutorial.
+Figure out a way to make the css be part of the JS and protect other namespaces.
+
+Liston to spacebar for the go to next.

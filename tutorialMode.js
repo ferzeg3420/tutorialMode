@@ -43,6 +43,7 @@ function enableTutorialMode() {
 
         // Triangle position values
         let triangleTopPos = focusedElementRect.bottom + yOffset + 5.5
+        triangle.style.transform = "rotate(0deg)";
         if( tooltip.classList.contains("tutorial-text-above") ) {
             triangleTopPos =
                 focusedElementRect.top + yOffset - 20;
@@ -266,8 +267,15 @@ function enableTutorialMode() {
                       class="covers-viewport translucid-black element-removed">\
                  </div>\
                  <div id="invisible-cover"\
-                      style="z-index: 1099"\
-                      class="covers-viewport invisible element-removed"></div>\
+                      style="z-index: 1099;\
+                             height: 100vh;\
+                             width: 100vw;\
+                             position: fixed;\
+                             top: 0;\
+                             opacity: 1;\
+                             background: transparent;\
+                             left: 0;"\
+                      class="element-removed"></div>\
                  <div id="close-tutorial-button"\
                       class="close-tutorial-button">\
                      <div class="x-slash"></div>\
