@@ -3,3 +3,7 @@ Move the Promise from the two getTutorialEtc functions to the invisibleCoverSome
 Add scroll to element. Scroll to top of tooltip if on top. Only scroll if out of view. Probably scroll by an amount that allows to see the bottom of the things tooltip or focused element.
 
 If a tooltip square is too big for the screen, draw it touching the edge (10px away from it would be better) of the screen.
+
+Add the ability to select where the text tooltip appears: left, middle, right.
+
+remove all the listeners when closing the tutorial.

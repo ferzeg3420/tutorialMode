@@ -129,38 +129,73 @@ function enableTutorialMode() {
         tutorialControls.tutorialPromptControls
                         .yesButton
                         .classList.add("element-removed");
+        tutorialControls
+            .tutorialPromptControls
+            .yesButton
+            .removeEventListener("click", yesListener);
+
         tutorialControls.tutorialPromptControls
                         .noButton
                         .classList.add("element-removed");
+        tutorialControls
+            .tutorialPromptControls
+            .noButton
+            .removeEventListener("click", noTutorialListener);
+
         tutorialControls.tutorialPromptControls
                         .closeButton
                         .classList.add("element-removed");
+        tutorialControls
+            .tutorialPromptControls
+            .closeButton
+            .removeEventListener("click", closeListener );
+
         tutorialControls.tutorialPromptControls
                         .startTutorialBox
                         .classList.add("element-removed");
+
         tutorialControls.tutorialPromptControls
                         .blackCover
                         .classList.add("element-removed");
+
         tutorialControls.tutorialPromptControls
                         .invisibleCover
                         .classList.add("element-removed");
+        tutorialControls
+            .tutorialPromptControls
+            .invisibleCover
+            .removeEventListener("click", coverClickListener);
+
         tutorialControls.tutorialPromptControls
                         .clickMessage
                         .classList.add("element-removed");
+
         tutorialControls.tooltipControls
                         .triangle
                         .classList.add("element-removed");
-    
+
         let infoTooltips = 
             tutorialControls.tooltipControls.infoTooltips;
-    
         for( let i = 0; i < infoTooltips.length; i++ ) {
             let elmn = infoTooltips[i];
             if( elmn === undefined ) {
                 break;
             }
             infoTooltips[i].classList.add("element-removed");
+            infoTooltips[i] = null;
         }
+        infoTooltips = null;
+
+        let thingsToFocusOn = 
+            tutorialControls.tooltipControls.thingsToFocusOn;
+        for( let i = 0; i < thingsToFocusOn.length; i++ ) {
+            let elmn = thingsToFocusOn[i];
+            if( elmn === undefined ) {
+                break;
+            }
+            thingsToFocusOn[i] = null;
+        }
+        thingsToFocusOn = null;
     }
     
     async function handleClickOnInvisibleCover(e, tutorialControls) {
@@ -311,38 +346,53 @@ function enableTutorialMode() {
             "tooltipControls": tooltipControls
         };
     }
-    
+
+    var yesListener = null;
+    var noTutorialListener = null;
+    var closeListener = null;
+    var coverClickListener = null;
+ 
     (async () => {
         if( localStorage.getItem("doNotShowTutorial") == "true" ) {
             return;
         }
         const tutorialControls = await insertTutorialAndGetTutorialControls();
+
+        yesListener = function(e) {
+            startTutorial(e, tutorialControls);
+        }
+
+        noTutorialListener = function (e) {
+            endTutorial(e, tutorialControls);
+        }
+
+        closeListener = function (e) {
+            endTutorial(e, tutorialControls);
+        }
+
+        coverClickListener = function (e) { 
+            handleClickOnInvisibleCover(e, tutorialControls);
+        }
+
         tutorialControls
             .tutorialPromptControls
             .yesButton
-            .addEventListener("click", 
-                              (e) => startTutorial(e, tutorialControls));
+            .addEventListener("click", yesListener);
         
         tutorialControls
             .tutorialPromptControls
             .noButton
-            .addEventListener("click",
-                              (e) => endTutorial(e, tutorialControls));
+            .addEventListener("click", noTutorialListener);
         
         tutorialControls
             .tutorialPromptControls
             .closeButton
-            .addEventListener("click", 
-                              (e) => endTutorial(e, tutorialControls));
+            .addEventListener("click", closeListener);
         
         tutorialControls
             .tutorialPromptControls
             .invisibleCover
-            .addEventListener("click", 
-                              (e) => handleClickOnInvisibleCover(
-                                                  e,
-                                                  tutorialControls 
-                                              ));
+            .addEventListener("click", coverClickListener);
         
         tutorialControls.tutorialPromptControls
                         .blackCover
