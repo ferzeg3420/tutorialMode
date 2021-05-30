@@ -37,21 +37,32 @@ function enableTutorialMode() {
                                      triangle, 
                                      focusedElementRect)
     {
+        // Need amount user scrolled because rects are viewport-relative
+        let yOffset = window.pageYOffset;
+        let xOffset = window.pageXOffset;
+
+        // Triangle position values
+        let triangleTopPos = focusedElementRect.bottom + yOffset + 5.5
         if( tooltip.classList.contains("tutorial-text-above") ) {
+            triangleTopPos =
+                focusedElementRect.top + yOffset - 20;
             triangle.style.transform = "rotate(180deg)";
-            triangle.style.top = String(focusedElementRect.top - 20) + "px";
-            triangle.style.left = String(focusedElementRect.left + 14) + "px";
-            let tooltipHeight = tooltipRect.bottom - tooltipRect.top;
-            tooltip.style.top =
-                String(focusedElementRect.top - 20 - tooltipHeight) + "px";
-            tooltip.style.left =
-                String(focusedElementRect.left + 10) + "px";
-            return;
         }
-        triangle.style.top = String(focusedElementRect.bottom + 5.5) + "px";
-        triangle.style.left = String(focusedElementRect.left + 14) + "px";
-        tooltip.style.top = String(focusedElementRect.bottom + 20) + "px";
-        tooltip.style.left = String(focusedElementRect.left + 10) + "px";
+        let triangleLeftPos = focusedElementRect.left + xOffset + 14
+
+        // Tooltip position values
+        let tooltipTopPos = focusedElementRect.bottom + yOffset + 20;
+        if( tooltip.classList.contains("tutorial-text-above") ) {
+            let tooltipHeight = tooltipRect.bottom - tooltipRect.top;
+            tooltipTopPos =
+                focusedElementRect.top + yOffset - 20 - tooltipHeight;
+        }
+        let tooltipLeftPos = focusedElementRect.left + xOffset + 10;
+
+        triangle.style.top = String(triangleTopPos) + "px";
+        triangle.style.left = String(triangleLeftPos) + "px";
+        tooltip.style.top = String(tooltipTopPos) + "px";
+        tooltip.style.left = String(tooltipLeftPos) + "px";
     }
     
     function showCurrentTooltip(currentTooltip,
@@ -337,6 +348,7 @@ function enableTutorialMode() {
                         .blackCover
                         .classList
                         .remove("element-removed");
+
         tutorialControls.tutorialPromptControls
                         .startTutorialBox
                         .classList
