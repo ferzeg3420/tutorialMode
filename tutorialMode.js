@@ -7,6 +7,7 @@ function enableTutorialMode() {
     
     const HIDE_PREV_TOOLTIP_AFTER_FIRST = 1;
     const BETWEEN_BLACK_AND_INVISIBLE_SCREENS = 98;
+    const IS_ABOVE_VIEWPORT = 0;
     
     function focusOnTutorialElement(currentTutorialElement) {
         return new Promise( resolve => {
@@ -87,7 +88,22 @@ function enableTutorialMode() {
     function scrollIfNecessary(currentTooltip,
                                currentTutorialElement) {
         return new Promise( resolve => {
-            console.log(">>>> scrollIfNecessary");
+            let tooltipRect = currentTooltip.getBoundingClientRect();
+            let focusedElementRect = 
+                currentTutorialElement.getBoundingClientRect();
+            let uppermostElement =
+                Math.min(tooltipRect.top, focusedElementRect.top);
+            if( uppermostElement < IS_ABOVE_VIEWPORT ) {
+                // scroll the screen up
+                window.scrollBy(0, uppermostElement);
+            }
+            const isBelowViewport = window.innerHeight;
+            let lowermostElement =
+                Math.max(tooltipRect.bottom, focusedElementRect.bottom);
+            if( lowermostElement > isBelowViewport ) {
+                // scroll the screen down
+                window.scrollBy(0, lowermostElement - window.innerHeight);
+            }
             resolve('resolved');
             return;
         });
@@ -111,7 +127,7 @@ function enableTutorialMode() {
                                  currentTutorialElement,
                                  triangle);
         await focusOnTutorialElement(currentTutorialElement);
-        await scrollIfNecessary();
+        await scrollIfNecessary(currentTooltip, currentTutorialElement);
         indexOfCurrentTooltip++;
         indexOfCurrentElementToFocus++;
     }
