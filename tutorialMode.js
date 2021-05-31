@@ -68,10 +68,8 @@ function enableTutorialMode() {
     
     function showCurrentTooltip(currentTooltip,
                                 currentTutorialElement,
-                                triangle,
-                                infoTooltips) {
+                                triangle) {
         return new Promise( resolve => {
-            let currentTooltip = infoTooltips[indexOfCurrentTooltip];
             currentTooltip.classList.remove("element-removed");
             triangle.classList.remove("element-removed");
             let tooltipRect = currentTooltip.getBoundingClientRect();
@@ -81,6 +79,15 @@ function enableTutorialMode() {
                                      tooltipRect,
                                      triangle, 
                                      focusedElementRect);
+            resolve('resolved');
+            return;
+        });
+    }
+
+    function scrollIfNecessary(currentTooltip,
+                               currentTutorialElement) {
+        return new Promise( resolve => {
+            console.log(">>>> scrollIfNecessary");
             resolve('resolved');
             return;
         });
@@ -102,9 +109,9 @@ function enableTutorialMode() {
         }
         await showCurrentTooltip(currentTooltip, 
                                  currentTutorialElement,
-                                 triangle,
-                                 infoTooltips);
+                                 triangle);
         await focusOnTutorialElement(currentTutorialElement);
+        await scrollIfNecessary();
         indexOfCurrentTooltip++;
         indexOfCurrentElementToFocus++;
     }
@@ -218,7 +225,6 @@ function enableTutorialMode() {
     }
     
     function startTutorial(e, tutorialControls) {
-    
         // Check if do not show is checked
         let doNotShowCheckbox = document.getElementById("no-show-again");
         if( doNotShowCheckbox.checked ) {
