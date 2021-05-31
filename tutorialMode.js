@@ -8,6 +8,7 @@ function enableTutorialMode() {
     const HIDE_PREV_TOOLTIP_AFTER_FIRST = 1;
     const BETWEEN_BLACK_AND_INVISIBLE_SCREENS = 98;
     const IS_ABOVE_VIEWPORT = 0;
+    const HEIGHT_OF_CLICK_MESSAGE = 50;
     
     function focusOnTutorialElement(currentTutorialElement) {
         return new Promise( resolve => {
@@ -97,12 +98,17 @@ function enableTutorialMode() {
                 // scroll the screen up
                 window.scrollBy(0, uppermostElement);
             }
-            const isBelowViewport = window.innerHeight;
+            const isBelowViewport = 
+                window.innerHeight - HEIGHT_OF_CLICK_MESSAGE;
             let lowermostElement =
                 Math.max(tooltipRect.bottom, focusedElementRect.bottom);
             if( lowermostElement > isBelowViewport ) {
                 // scroll the screen down
-                window.scrollBy(0, lowermostElement - window.innerHeight);
+                const scrollDownAmount = 
+                    lowermostElement 
+                        - window.innerHeight 
+                        + HEIGHT_OF_CLICK_MESSAGE;
+                window.scrollBy(0, scrollDownAmount);
             }
             resolve('resolved');
             return;
@@ -304,9 +310,18 @@ function enableTutorialMode() {
                      <div class="x-back-slash"></div>\
                  </div>\
                  <div id="click-message"\
-                      style="z-index: 1098"\
-                      class="fixed-on-bottom-center element-removed">\
-                      <h4>Click anywhere to continue</h4>\
+                      style="z-index: 1098;\
+                             position: fixed;\
+                             bottom: 20px;\
+                             font-size: 20px;\
+                             width: 100%;\
+                             display: flex;\
+                             flex-direction: row;\
+                             justify-content: center;\
+                             align-items: center;\
+                             color: grey;"\
+                      class="element-removed">\
+                      Click anywhere to continue\
                  </div>\
                  <div id="tutorial-triangle"\
                       class="element-removed"\
