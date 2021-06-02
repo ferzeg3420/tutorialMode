@@ -3,8 +3,7 @@
 This is a utility I made for myself to be able to showcase my
 webapps.  The goal is to make something that focuses on an element
 in a webpage and shows a small tooltip underneath that explains
-what that element is for.  In short, this program explains to users
-how to use a given webapp.
+what that element is for. 
 
 ## Instructions
 
