@@ -52,15 +52,15 @@ styling inside a class.
 </div>
 ```
 
-3. Create a dialogue box that prompts the user to start the tutorial,
-and add the following id to it: `tutorial-modal`. You also need a
-yes button with the following id `start-tutorial` and a no button
-with the following id: `skip-tutorial`
+What this does is create a dialogue box that prompts the user to
+start the tutorial, and add the following id to it: `tutorial-modal`.
+You also need a yes button with the following id `start-tutorial`
+and a no button with the following id: `skip-tutorial`
 
-4. Add an id of `tutorial-focus-1` to the element that you want to
-focus on. And a matching id to the tooltip with id `tutorial-text-1`
-that you want to be shown. The tooltips also need the classes
-`tutorial-text` and `element-removed`.
+4. Add a class of `tutorial-focus-1` to the element that you want
+to focus on first. And a matching class to the tooltip with class
+`tutorial-text-1` that you want to be shown. The tooltips also need
+the classes `tutorial-text` and `element-removed`.
 
 5. Repeat previous step with the next number in the sequence
 `tutorial-focus-2`, `tutorial-focus-3` and so on. Same for the
